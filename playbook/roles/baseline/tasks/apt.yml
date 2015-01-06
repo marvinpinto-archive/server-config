@@ -1,0 +1,16 @@
+---
+- name: 'Ensure the /etc/apt/sources.list file is empty'
+  sudo: 'yes'
+  copy:
+    content: "# Nothing to see here"
+    dest: '/etc/apt/sources.list'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+
+- name: 'Add the base ubuntu repositories'
+  sudo: 'yes'
+  apt_repository:
+    repo: "{{ item }}"
+    state: 'present'
+  with_items: 'ubuntu_base_repos'
