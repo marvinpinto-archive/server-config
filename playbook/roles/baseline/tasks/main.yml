@@ -1,0 +1,3 @@
+---
+- name: 'Ensure we can connect to this host'
+  ping:
