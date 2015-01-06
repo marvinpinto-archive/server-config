@@ -1,12 +1,9 @@
 ---
-- name: 'Ensure the /etc/apt/sources.list file is empty'
+- name: 'Ensure the /etc/apt/sources.list file does not exist'
   sudo: 'yes'
-  copy:
-    content: "# Nothing to see here"
-    dest: '/etc/apt/sources.list'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
+  file:
+    path: '/etc/apt/sources.list'
+    state: 'absent'
 
 - name: 'Add the base ubuntu repositories'
   sudo: 'yes'
